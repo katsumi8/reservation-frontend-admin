@@ -18,9 +18,9 @@ function Home() {
 
   const gridColNum = 15;
 
-  const list: JSX.Element[] = [];
+  const defaultGridCells: JSX.Element[] = [];
   for (let i = 0; i < gridColNum ** 2; i++) {
-    list.push(
+    defaultGridCells.push(
       <div
         className="aspect-square rounded-lg border-blue-500 bg-slate-50 p-1 shadow-lg"
         key={i.toString()}
@@ -36,21 +36,29 @@ function Home() {
 
   for (let i = 0; i < clickedData.length; i++) {
     let cellId = clickedData[i].id;
-    let rowStartNum = Math.floor(Number(cellId) / gridColNum);
-    let colStartNum = Number(cellId) - rowStartNum * gridColNum;
-    console.log(rowStartNum, colStartNum);
-    let className = `col-start-${colStartNum} col-end-${
-      colStartNum + 1
-    } row-start-${rowStartNum} row-end-${
-      rowStartNum + 1
-    } aspect-square rounded-lg border-blue-500 bg-red-50 p-1`;
-    coloredCells.push(<div className={className}>test</div>);
+    let rowStartNum = Math.floor(Number(cellId) / gridColNum) + 1;
+    let colStartNum = Number(cellId) - (rowStartNum - 1) * gridColNum + 1;
+
+    let colStart = "col-start-" + colStartNum.toString();
+    let colEnd = "col-end-" + (colStartNum + 1).toString();
+    let rowStart = "row-start-" + rowStartNum.toString();
+    let rowEnd = "row-end-" + (rowStartNum + 1).toString();
+
+    coloredCells.push(
+      <div
+        className={`${colStart} ${colEnd} ${rowStart} ${rowEnd} aspect-square rounded-lg border-blue-500 bg-red-50 p-1`}
+        key={cellId}
+      >
+        test
+      </div>
+    );
+    console.log(colStart, colEnd, rowStart, rowEnd);
   }
 
   return (
     <div className="container absolute mx-auto overflow-scroll rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">
       <section className="absolute grid aspect-square w-[80vw] grid-cols-15 grid-rows-15 gap-1 rounded-lg text-center font-mono text-sm font-bold leading-6 text-slate-500">
-        {list}
+        {defaultGridCells}
       </section>
       <section className="pointer-events-none relative grid aspect-square w-[80vw] grid-cols-15 grid-rows-15 gap-1 rounded-lg text-center font-mono text-sm font-bold leading-6 text-slate-500">
         {coloredCells}
