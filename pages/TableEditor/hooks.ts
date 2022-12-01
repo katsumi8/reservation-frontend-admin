@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { cellType } from "../../types/props";
+import { cellStyle, cellType } from "../../types/props";
+import { gridColNum } from "./const";
 
 export const useGridEditor = () => {
   const [clickedId, setClickedId] = useState<string>("");
   const [selectedCells, setSelectedCCells] = useState<cellType[]>([]);
+  // const [colorCellStyles, setColorCellStyles] = useState<cellStyle[]>([]);
 
   const mouseClickStartHandler = (e: React.MouseEvent<HTMLElement>): void => {
     console.log("click was started");
@@ -28,7 +30,10 @@ export const useGridEditor = () => {
     selectedCells: cellType[],
     num: number,
     gridColNum: number
-  ): string => {
+  ): {
+    gridArea: string;
+    capability: string;
+  } => {
     const rowStart = Math.ceil(
       Number(selectedCells[num].startCell) / gridColNum
     );
@@ -38,16 +43,34 @@ export const useGridEditor = () => {
       Math.ceil(Number(selectedCells[num].endCell) / gridColNum) + 1;
     const colEnd =
       Number(selectedCells[num].endCell) - (rowEnd - 2) * gridColNum + 2;
-
     const gridArea = `${rowStart} / ${colStart} / ${rowEnd} / ${colEnd}`;
 
-    return gridArea;
+    const rowDiff = rowEnd - rowStart;
+    const colDiff = colEnd - colStart;
+
+    const capability =
+      rowDiff > colDiff ? (rowDiff * 2).toString() : (colDiff * 2).toString();
+
+    return { gridArea, capability };
   };
+
+  // for (let i = 0; i < selectedCells.length; i++) {
+  //   const { gridArea, capability } = calculateGridStyle(
+  //     selectedCells,
+  //     i,
+  //     gridColNum
+  //   );
+  //   setColorCellStyles((prevCellStyles) => [
+  //     ...prevCellStyles,
+  //     { id: i, position: gridArea, isRound: false, capability },
+  //   ]);
+  // }
 
   return {
     selectedCells,
     mouseClickStartHandler,
     mouseClickLeaveHandler,
+    // colorCellStyles,
     calculateGridStyle
   };
 };

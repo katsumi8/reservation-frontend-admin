@@ -27,7 +27,8 @@ function TableGrid() {
 
   const coloredCells: JSX.Element[] = [];
   for (let i = 0; i < selectedCells.length; i++) {
-    const gridArea = calculateGridStyle(selectedCells, i, gridColNum)
+    const { gridArea } = calculateGridStyle(selectedCells, i, gridColNum);
+
     coloredCells.push(
       <div
         key={i}
@@ -35,12 +36,15 @@ function TableGrid() {
         style={{
           gridArea,
         }}
-        onClick={(e) => {
-          console.log("cliicked");
-        }}
       >
         ID
-        <button className="float-right" onClick={()=>console.log("button was clicked")} style={{pointerEvents: "auto" }}>X</button>
+        <button
+          className="float-right"
+          onClick={() => console.log("button was clicked")}
+          style={{ pointerEvents: "auto" }}
+        >
+          X
+        </button>
       </div>
     );
   }
