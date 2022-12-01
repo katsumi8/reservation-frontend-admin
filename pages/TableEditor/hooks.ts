@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { cellType } from "../../../frontend-management/src/types/props";
+import { cellType } from "../../types/props";
 
 export const useGridEditor = () => {
   const [clickedId, setClickedId] = useState<string>("");
