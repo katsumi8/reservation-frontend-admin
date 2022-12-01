@@ -1,0 +1,1 @@
+export const gridColNum = 15;
