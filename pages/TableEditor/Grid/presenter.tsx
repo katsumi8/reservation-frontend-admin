@@ -49,7 +49,7 @@ function TableGrid({
         ID:{tableStyles[i].id}
         <button
           className="float-right"
-          onClick={(e) => deleteClickHandler(tableStyles[i].id)}
+          onClick={(e) => deleteClickHandler(Number(tableStyles[i].id))}
           style={{ pointerEvents: "auto" }}
         >
           X

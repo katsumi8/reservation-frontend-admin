@@ -18,7 +18,7 @@ export const useGridEditor = ({
   };
 
   const deleteClickHandler = (id: number) => {
-    setTableStyles(tableStyles.filter((item) => item.id !== id));
+    setTableStyles(tableStyles.filter((item) => Number(item.id) !== id));
   };
 
   return {

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Modal from "react-modal";
 import { idInputModalProps } from "../../../../types/props";
 import { tableStyle } from "../../../../types/states";
@@ -28,7 +29,7 @@ const IdInputModal = ({
   const okHandler = () => {
     const { gridArea, capability } = getGridArea(gridColNum);
 
-    setTableStyles((prevCells: tableStyle[]) => [
+    setTableStyles((prevCells) => [
       ...prevCells,
       {
         id: tableId,
@@ -89,6 +90,10 @@ const IdInputModal = ({
       </div>
     </Modal>
   );
+
+  useEffect(() => {
+    Modal.setAppElement("body");
+  }, []);
 
   return <>{confirmModal}</>;
 };

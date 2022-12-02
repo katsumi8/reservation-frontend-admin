@@ -1,5 +1,5 @@
 export type tableStyle = {
-  id: number;
+  id: string;
   position: string;
   isRound: false;
   capability: string;
