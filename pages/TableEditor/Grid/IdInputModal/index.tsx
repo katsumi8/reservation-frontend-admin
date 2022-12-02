@@ -1,26 +1,7 @@
-import { Dispatch, SetStateAction, useState } from "react";
 import Modal from "react-modal";
-import { cellType } from "../../../../types/props";
-
-type Props = {
-  selectedCells: { startCell: number; endCell: number };
-  setTableStyles: any;
-  showModal: boolean;
-  setShowModal: any;
-  tableId: string;
-  setTableId: Dispatch<SetStateAction<string>>;
-};
-
-type useStateType = {
-  id: number;
-  position: string;
-  isRound: false;
-  capability: string;
-};
-
-type getGridFnArgs = {
-  gridColNum: number;
-};
+import { idInputModalProps } from "../../../../types/props";
+import { tableStyle } from "../../../../types/states";
+import { gridColNum } from "../const";
 
 const IdInputModal = ({
   selectedCells,
@@ -29,9 +10,9 @@ const IdInputModal = ({
   setShowModal,
   tableId,
   setTableId,
-}: Props) => {
+}: idInputModalProps) => {
   const { startCell, endCell } = selectedCells;
-  const getGridArea = ({ gridColNum }: getGridFnArgs) => {
+  const getGridArea = (gridColNum: number) => {
     const rowStart = Math.ceil(Number(startCell) / gridColNum);
     const colStart = Number(startCell) - (rowStart - 1) * gridColNum + 1;
     const rowEnd = Math.ceil(Number(endCell) / gridColNum) + 1;
@@ -45,9 +26,9 @@ const IdInputModal = ({
   };
 
   const okHandler = () => {
-    const { gridArea, capability } = getGridArea({ gridColNum: 15 });
+    const { gridArea, capability } = getGridArea(gridColNum);
 
-    setTableStyles((prevCells: useStateType[]) => [
+    setTableStyles((prevCells: tableStyle[]) => [
       ...prevCells,
       {
         id: tableId,

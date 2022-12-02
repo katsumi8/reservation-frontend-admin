@@ -1,20 +1,15 @@
 import { useState } from "react";
-import { cellType } from "../../../types/props";
+import { cellType, tableStyle } from "../../../types/states";
 import IdInputModal from "./IdInputModal";
 import TableGrid from "./presenter";
-type useStateType = {
-  id: number;
-  position: string;
-  isRound: false;
-  capability: string;
-};
+
 
 export default function Grid() {
   const [selectedCells, setSelectedCells] = useState<cellType>({
     startCell: 0,
     endCell: 0,
   });
-  const [tableStyles, setTableStyles] = useState<useStateType[]>([]);
+  const [tableStyles, setTableStyles] = useState<tableStyle[]>([]);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [tableId, setTableId] = useState<string>("");
 
@@ -24,7 +19,6 @@ export default function Grid() {
         setShowModal={setShowModal}
         setSelectedCells={setSelectedCells}
         tableStyles={tableStyles}
-        tableId={tableId}
         setTableStyles={setTableStyles}
 
       />

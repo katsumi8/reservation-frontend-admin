@@ -1,39 +1,21 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { cellStyle, cellType } from "../../../types/props";
+import { GridProps } from "../../../types/props";
 import { gridColNum } from "./const";
 import { useGridEditor } from "./hooks";
-
-
-export type useStateType = {
-  id: number;
-  position: string;
-  isRound: false;
-  capability: string;
-};
-type Props = {
-  setShowModal: Dispatch<SetStateAction<boolean>>;
-  setSelectedCells: Dispatch<SetStateAction<cellType>>;
-  tableStyles: useStateType[];
-  tableId: string;
-  setTableStyles: Dispatch<SetStateAction<useStateType[]>>;
-};
 
 function TableGrid({
   setShowModal,
   setSelectedCells,
   tableStyles,
-  tableId,
   setTableStyles,
-}: Props) {
+}: GridProps) {
   const {
     mouseClickStartHandler,
     mouseClickLeaveHandler,
-    // colorCellStyles,
     deleteClickHandler,
   } = useGridEditor({
     setShowModal,
     setSelectedCells,
-    tableId,
     tableStyles,
     setTableStyles,
   });
