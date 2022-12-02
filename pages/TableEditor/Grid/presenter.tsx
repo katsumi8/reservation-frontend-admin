@@ -1,14 +1,42 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
+import { cellStyle, cellType } from "../../../types/props";
 import { gridColNum } from "./const";
 import { useGridEditor } from "./hooks";
 
-function TableGrid() {
+
+export type useStateType = {
+  id: number;
+  position: string;
+  isRound: false;
+  capability: string;
+};
+type Props = {
+  setShowModal: Dispatch<SetStateAction<boolean>>;
+  setSelectedCells: Dispatch<SetStateAction<cellType>>;
+  tableStyles: useStateType[];
+  tableId: string;
+  setTableStyles: Dispatch<SetStateAction<useStateType[]>>;
+};
+
+function TableGrid({
+  setShowModal,
+  setSelectedCells,
+  tableStyles,
+  tableId,
+  setTableStyles,
+}: Props) {
   const {
     mouseClickStartHandler,
     mouseClickLeaveHandler,
-    colorCellStyles,
+    // colorCellStyles,
     deleteClickHandler,
-  } = useGridEditor();
+  } = useGridEditor({
+    setShowModal,
+    setSelectedCells,
+    tableId,
+    tableStyles,
+    setTableStyles,
+  });
 
   const defaultGridCells: JSX.Element[] = [];
   for (let i = 0; i < gridColNum ** 2; i++) {
@@ -26,20 +54,20 @@ function TableGrid() {
   }
 
   const coloredCells: JSX.Element[] = [];
-  for (let i = 0; i < colorCellStyles.length; i++) {
+  for (let i = 0; i < tableStyles.length; i++) {
     coloredCells.push(
       <div
         key={i}
-        id={`${colorCellStyles[i].id}`}
+        id={`${tableStyles[i].id}`}
         className="rounded-lg border-blue-500 bg-red-50 p-1"
         style={{
-          gridArea: colorCellStyles[i].position,
+          gridArea: tableStyles[i].position,
         }}
       >
-        ID:{colorCellStyles[i].id}
+        ID:{tableStyles[i].id}
         <button
           className="float-right"
-          onClick={(e) => deleteClickHandler(colorCellStyles[i].id)}
+          onClick={(e) => deleteClickHandler(tableStyles[i].id)}
           style={{ pointerEvents: "auto" }}
         >
           X

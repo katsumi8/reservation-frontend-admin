@@ -1,30 +1,49 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { cellStyle, cellType } from "../../../types/props";
 import { gridColNum } from "./const";
+import { useStateType } from "./presenter";
 
-export const useGridEditor = () => {
+type Props = {
+  setShowModal: Dispatch<SetStateAction<boolean>>;
+  setSelectedCells: Dispatch<SetStateAction<cellType>>;
+  tableId: string;
+  tableStyles: useStateType[];
+  setTableStyles: Dispatch<SetStateAction<useStateType[]>>;
+};
+
+export const useGridEditor = ({
+  setShowModal,
+  setSelectedCells,
+  tableId,
+  tableStyles,
+  setTableStyles,
+}: Props) => {
   const [clickedId, setClickedId] = useState<string>("");
-  const [selectedCells, setSelectedCells] = useState<cellType[]>([]);
+  // const [selectedCells, setSelectedCells] = useState<cellType[]>([]);
 
   const mouseClickStartHandler = (e: React.MouseEvent<HTMLElement>): void => {
     console.log("click was started");
     const { id } = e.currentTarget;
-    setClickedId(id);
+    // setClickedId(id);
+
+    setSelectedCells((prevState) => ({ ...prevState, startCell: Number(id) }));
   };
 
   const mouseClickLeaveHandler = (e: React.MouseEvent<HTMLElement>): void => {
     console.log("click was left");
     const { id } = e.currentTarget;
-    setClickedId("");
+    setShowModal(true);
+    setSelectedCells((prevState) => ({ ...prevState, endCell: Number(id) }));
 
-    setSelectedCells((prevCells) => [
-      ...prevCells,
-      {
-        id: selectedCells.length,
-        startCell: Number(clickedId),
-        endCell: Number(id),
-      },
-    ]);
+    // setClickedId("");
+    // setSelectedCells((prevCells) => [
+    //   ...prevCells,
+    //   {
+    //     id: selectedCells.length,
+    //     startCell: Number(clickedId),
+    //     endCell: Number(id),
+    //   },
+    // ]);
   };
 
   const calculateGridStyle = (
@@ -48,35 +67,38 @@ export const useGridEditor = () => {
     const colDiff = colEnd - colStart;
     const capability =
       rowDiff > colDiff ? (rowDiff * 2).toString() : (colDiff * 2).toString();
-
-    return { id, gridArea, capability };
+    if (id) {
+      return { id, gridArea, capability };
+    } else {
+      return { id: 0, gridArea, capability };
+    }
   };
 
-  const colorCellStyles: cellStyle[] = [];
-  for (let i = 0; i < selectedCells.length; i++) {
-    const { id, gridArea, capability } = calculateGridStyle(
-      selectedCells,
-      i,
-      gridColNum
-    );
+  // const colorCellStyles: cellStyle[] = [];
+  // for (let i = 0; i < selectedCells.length; i++) {
+  //   const { id, gridArea, capability } = calculateGridStyle(
+  //     selectedCells,
+  //     i,
+  //     gridColNum
+  //   );
 
-    colorCellStyles.push({
-      id,
-      position: gridArea,
-      isRound: false,
-      capability,
-    });
-  }
+  //   colorCellStyles.push({
+  //     id,
+  //     position: gridArea,
+  //     isRound: false,
+  //     capability,
+  //   });
+  // }
 
   const deleteClickHandler = (id: number) => {
-    setSelectedCells(selectedCells.filter((item, index) => item.id !== id));
+    setTableStyles(tableStyles.filter((item) => item.id !== id));
   };
 
   return {
-    selectedCells,
+    // selectedCells,
     mouseClickStartHandler,
     mouseClickLeaveHandler,
-    colorCellStyles,
+    // colorCellStyles,
     calculateGridStyle,
     deleteClickHandler,
   };
