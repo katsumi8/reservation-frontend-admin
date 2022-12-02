@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { cellStyle, cellType } from "../../types/props";
+import { cellStyle, cellType } from "../../../types/props";
 import { gridColNum } from "./const";
 
 export const useGridEditor = () => {
   const [clickedId, setClickedId] = useState<string>("");
   const [selectedCells, setSelectedCells] = useState<cellType[]>([]);
-  // const [colorCellStyles, setColorCellStyles] = useState<cellStyle[]>([]);
 
   const mouseClickStartHandler = (e: React.MouseEvent<HTMLElement>): void => {
     console.log("click was started");

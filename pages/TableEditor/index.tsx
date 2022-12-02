@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React from "react";
-import TableGrid from "./presenter";
+import Grid from "./Grid";
 
 const title = "Create your reservation";
 
@@ -13,7 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* <AllHeader title={title}> */}
-      <TableGrid />
+      <Grid />
     </div>
   );
 }
