@@ -1,4 +1,5 @@
 export type cellType = {
+  id: number;
   startCell: number;
   endCell: number;
 };

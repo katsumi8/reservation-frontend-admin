@@ -6,8 +6,8 @@ function TableGrid() {
   const {
     mouseClickStartHandler,
     mouseClickLeaveHandler,
-    selectedCells,
-    calculateGridStyle,
+    colorCellStyles,
+    deleteClickHandler,
   } = useGridEditor();
 
   const defaultGridCells: JSX.Element[] = [];
@@ -26,21 +26,20 @@ function TableGrid() {
   }
 
   const coloredCells: JSX.Element[] = [];
-  for (let i = 0; i < selectedCells.length; i++) {
-    const { gridArea } = calculateGridStyle(selectedCells, i, gridColNum);
-
+  for (let i = 0; i < colorCellStyles.length; i++) {
     coloredCells.push(
       <div
         key={i}
+        id={`${colorCellStyles[i].id}`}
         className="rounded-lg border-blue-500 bg-red-50 p-1"
         style={{
-          gridArea,
+          gridArea: colorCellStyles[i].position,
         }}
       >
-        ID
+        ID:{colorCellStyles[i].id}
         <button
           className="float-right"
-          onClick={() => console.log("button was clicked")}
+          onClick={(e) => deleteClickHandler(colorCellStyles[i].id)}
           style={{ pointerEvents: "auto" }}
         >
           X
