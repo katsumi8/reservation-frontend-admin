@@ -1,7 +1,6 @@
+import { type } from "os";
 import { Dispatch, SetStateAction } from "react";
 import { cellType, tableStyle } from "./states";
-
-
 
 
 export type idInputModalProps = {
@@ -9,9 +8,9 @@ export type idInputModalProps = {
   setTableStyles: Dispatch<SetStateAction<tableStyle[]>>;
   showModal: boolean;
   setShowModal: Dispatch<SetStateAction<boolean>>;
-  // tableId: string;
-  // setTableId: Dispatch<SetStateAction<string>>;
 };
+
+export type idInputModalHooksProps = Omit<idInputModalProps, "showModal">
 
 export type GridProps = {
   setShowModal: Dispatch<SetStateAction<boolean>>;
