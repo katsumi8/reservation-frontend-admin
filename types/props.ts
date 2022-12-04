@@ -9,8 +9,8 @@ export type idInputModalProps = {
   setTableStyles: Dispatch<SetStateAction<tableStyle[]>>;
   showModal: boolean;
   setShowModal: Dispatch<SetStateAction<boolean>>;
-  tableId: string;
-  setTableId: Dispatch<SetStateAction<string>>;
+  // tableId: string;
+  // setTableId: Dispatch<SetStateAction<string>>;
 };
 
 export type GridProps = {

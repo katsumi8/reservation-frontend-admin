@@ -11,7 +11,7 @@ export default function Grid() {
   });
   const [tableStyles, setTableStyles] = useState<tableStyle[]>([]);
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [tableId, setTableId] = useState<string>("");
+  // const [tableId, setTableId] = useState<string>("");
 
   return (
     <>
@@ -27,8 +27,8 @@ export default function Grid() {
         setTableStyles={setTableStyles}
         showModal={showModal}
         setShowModal={setShowModal}
-        tableId={tableId}
-        setTableId={setTableId}
+        // tableId={tableId}
+        // setTableId={setTableId}
       />
     </>
   );

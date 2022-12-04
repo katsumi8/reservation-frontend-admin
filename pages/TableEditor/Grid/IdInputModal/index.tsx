@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Modal from "react-modal";
 import { idInputModalProps } from "../../../../types/props";
 import { gridColNum } from "../const";
@@ -8,10 +8,14 @@ const IdInputModal = ({
   setTableStyles,
   showModal,
   setShowModal,
-  tableId,
-  setTableId,
+  // tableId,
+  // setTableId,
 }: idInputModalProps) => {
+  const [tableId, setTableId] = useState<string>("");
+
   const { startCell, endCell } = selectedCells;
+
+
   const getGridArea = (gridColNum: number) => {
     const rowStart = Math.ceil(Number(startCell) / gridColNum);
     const colStart = Number(startCell) - (rowStart - 1) * gridColNum + 1;
@@ -75,9 +79,23 @@ const IdInputModal = ({
           onChange={(e) => setTableId(e.target.value)}
           required
         />
+        <div className="mt-1 flex items-center">
+          <input
+            id="isRound"
+            type="checkbox"
+            value=""
+            className="h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
+          />
+          <label
+            htmlFor="isRound"
+            className="ml-2 text-sm font-small text-gray-700 dark:text-gray-300"
+          >
+            Is the table Round?
+          </label>
+        </div>
       </div>
       <div className="float-right py-2">
-        <button className="m-1 rounded border border-gray-400 bg-white py-1 px-4 font-semibold text-gray-800 shadow hover:bg-gray-100">
+        <button className="m-1 rounded border border-gray-400 bg-white py-1 px-4 text-gray-400 shadow hover:bg-gray-100">
           Cancel
         </button>
         <button
