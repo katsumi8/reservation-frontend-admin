@@ -49,6 +49,12 @@ const IdInputModal = ({
     setIsChecked(false);
   };
 
+  const cancelHandler = () => {
+    setShowModal(false);
+    setTableId("");
+    setIsChecked(false);
+  };
+
   // モーダルを画面中央に表示する用のスタイル
   const customStyles = {
     content: {
@@ -98,12 +104,16 @@ const IdInputModal = ({
         </div>
       </div>
       <div className="float-right py-2">
-        <button className="m-1 rounded border border-gray-400 bg-white py-1 px-4 text-gray-400 shadow hover:bg-gray-100">
+        <button
+          className="m-1 rounded border border-gray-400 bg-white py-1 px-4 text-gray-400 shadow hover:bg-gray-100"
+          type="button"
+          onClick={cancelHandler}
+        >
           Cancel
         </button>
         <button
-          type="button"
           className="focus:shadow-outline m-1 rounded bg-blue-500 py-1 px-4 font-bold text-white shadow hover:bg-blue-400 focus:outline-none"
+          type="button"
           onClick={submitHandler}
         >
           Submit

@@ -34,7 +34,6 @@ function TableGrid({
 
   const coloredCells: JSX.Element[] = [];
   for (let i = 0; i < tableStyles.length; i++) {
-    console.log(tableStyles[i].id, tableStyles[i].isRound)
     coloredCells.push(
       <div
         key={i}
