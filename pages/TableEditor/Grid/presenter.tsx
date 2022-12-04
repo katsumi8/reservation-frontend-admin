@@ -9,16 +9,13 @@ function TableGrid({
   tableStyles,
   setTableStyles,
 }: GridProps) {
-  const {
-    mouseClickStartHandler,
-    mouseClickLeaveHandler,
-    deleteClickHandler,
-  } = useGridEditor({
-    setShowModal,
-    setSelectedCells,
-    tableStyles,
-    setTableStyles,
-  });
+  const { mouseClickStartHandler, mouseClickLeaveHandler, deleteClickHandler } =
+    useGridEditor({
+      setShowModal,
+      setSelectedCells,
+      tableStyles,
+      setTableStyles,
+    });
 
   const defaultGridCells: JSX.Element[] = [];
   for (let i = 0; i < gridColNum ** 2; i++) {
@@ -46,7 +43,6 @@ function TableGrid({
           gridArea: tableStyles[i].position,
         }}
       >
-        ID:{tableStyles[i].id}
         <button
           className="float-right"
           onClick={(e) => deleteClickHandler(Number(tableStyles[i].id))}
@@ -54,6 +50,9 @@ function TableGrid({
         >
           X
         </button>
+        <p className="m-0">
+          ID:{tableStyles[i].id}
+        </p>
       </div>
     );
   }

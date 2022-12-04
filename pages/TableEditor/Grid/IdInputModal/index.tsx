@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import Modal from "react-modal";
 import { idInputModalProps } from "../../../../types/props";
-import { tableStyle } from "../../../../types/states";
 import { gridColNum } from "../const";
 
 const IdInputModal = ({
@@ -26,7 +25,7 @@ const IdInputModal = ({
     return { gridArea, capability };
   };
 
-  const okHandler = () => {
+  const submitHandler = () => {
     const { gridArea, capability } = getGridArea(gridColNum);
 
     setTableStyles((prevCells) => [
@@ -58,34 +57,35 @@ const IdInputModal = ({
   // 削除モーダル
   const confirmModal = (
     <Modal style={customStyles} isOpen={showModal}>
-      <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+      <div className="mt-3 mb-3 text-left sm:mt-0 sm:text-left">
         <h3
           className="text-lg font-medium leading-6 text-gray-900"
           id="modal-title"
         >
           Please input the tableID
         </h3>
-        <div className="mt-2">
-          <p className="text-sm text-gray-500">ex. 1, 101, 110</p>
-        </div>
+        <p className="text-sm text-gray-500">ex. 1, 101, 110</p>
       </div>
-      <>
+      <div className="mb-4">
         <input
-          className="text-black"
+          className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
           type="text"
           placeholder="TableID"
           value={tableId}
           onChange={(e) => setTableId(e.target.value)}
           required
         />
-      </>
-      <div className="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+      </div>
+      <div className="float-right py-2">
+        <button className="m-1 rounded border border-gray-400 bg-white py-1 px-4 font-semibold text-gray-800 shadow hover:bg-gray-100">
+          Cancel
+        </button>
         <button
           type="button"
-          className="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
-          onClick={okHandler}
+          className="focus:shadow-outline m-1 rounded bg-blue-500 py-1 px-4 font-bold text-white shadow hover:bg-blue-400 focus:outline-none"
+          onClick={submitHandler}
         >
-          ok
+          Submit
         </button>
       </div>
     </Modal>
