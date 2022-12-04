@@ -11,6 +11,7 @@ const IdInputModal = ({
 }: idInputModalProps) => {
   const [tableId, setTableId] = useState<string>("");
   const [isChecked, setIsChecked] = useState<boolean>(false);
+  const [isErrored, setIsErrored] = useState<boolean>(false);
 
   const { startCell, endCell } = selectedCells;
 
@@ -32,26 +33,30 @@ const IdInputModal = ({
   };
 
   const submitHandler = () => {
-    const { gridArea, capability } = getGridArea(gridColNum);
+    if (tableId) {
+      const { gridArea, capability } = getGridArea(gridColNum);
 
-    setTableStyles((prevCells) => [
-      ...prevCells,
-      {
-        id: tableId,
-        position: gridArea,
-        isRound: isChecked,
-        capability,
-      },
-    ]);
+      setTableStyles((prevCells) => [
+        ...prevCells,
+        {
+          id: tableId,
+          position: gridArea,
+          isRound: isChecked,
+          capability,
+        },
+      ]);
 
-    setShowModal(false);
-    setTableId("");
-    setIsChecked(false);
+      setTableId("");
+      setShowModal(false);
+      setIsChecked(false);
+    } else {
+      setIsErrored(true);
+    }
   };
 
   const cancelHandler = () => {
-    setShowModal(false);
     setTableId("");
+    setShowModal(false);
     setIsChecked(false);
   };
 
@@ -85,8 +90,12 @@ const IdInputModal = ({
           placeholder="TableID"
           value={tableId}
           onChange={(e) => setTableId(e.target.value)}
+          onFocus={(e) => setIsErrored(false)}
           required
         />
+        {isErrored ? (
+          <p className="text-red-600">please input table ID</p>
+        ) : null}
         <div className="mt-1 flex items-center">
           <input
             id="isRound"

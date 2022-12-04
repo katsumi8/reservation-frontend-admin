@@ -51,7 +51,7 @@ function TableGrid({
           X
         </button>
         <p className="m-0">
-          ID:{tableStyles[i].id}
+          ID: {tableStyles[i].id}
         </p>
       </div>
     );
