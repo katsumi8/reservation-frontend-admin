@@ -8,13 +8,15 @@ const IdInputModal = ({
   setTableStyles,
   showModal,
   setShowModal,
-  // tableId,
-  // setTableId,
 }: idInputModalProps) => {
   const [tableId, setTableId] = useState<string>("");
+  const [isChecked, setIsChecked] = useState<boolean>(false);
 
   const { startCell, endCell } = selectedCells;
 
+  const isCheckHandler = () => {
+    setIsChecked(!isChecked);
+  };
 
   const getGridArea = (gridColNum: number) => {
     const rowStart = Math.ceil(Number(startCell) / gridColNum);
@@ -37,13 +39,14 @@ const IdInputModal = ({
       {
         id: tableId,
         position: gridArea,
-        isRound: false,
+        isRound: isChecked,
         capability,
       },
     ]);
 
     setShowModal(false);
     setTableId("");
+    setIsChecked(false);
   };
 
   // モーダルを画面中央に表示する用のスタイル
@@ -58,7 +61,6 @@ const IdInputModal = ({
     },
   };
 
-  // 削除モーダル
   const confirmModal = (
     <Modal style={customStyles} isOpen={showModal}>
       <div className="mt-3 mb-3 text-left sm:mt-0 sm:text-left">
@@ -83,12 +85,13 @@ const IdInputModal = ({
           <input
             id="isRound"
             type="checkbox"
-            value=""
+            checked={isChecked}
+            onChange={isCheckHandler}
             className="h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
           />
           <label
             htmlFor="isRound"
-            className="ml-2 text-sm font-small text-gray-700 dark:text-gray-300"
+            className="font-small ml-2 text-sm text-gray-700 dark:text-gray-300"
           >
             Is the table Round?
           </label>

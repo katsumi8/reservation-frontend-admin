@@ -1,7 +1,7 @@
 export type tableStyle = {
   id: string;
   position: string;
-  isRound: false;
+  isRound: boolean;
   capability: string;
 };
 
