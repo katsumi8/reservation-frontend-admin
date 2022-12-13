@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React from "react";
 import { GridProps } from "../../../types/props";
 import { gridColNum } from "./const";
 import { useGridEditor } from "./hooks";
@@ -56,6 +56,8 @@ function TableGrid({
       </div>
     );
   }
+
+  console.log({coloredCells})
 
   return (
     <div className="container absolute mx-auto overflow-scroll rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">
