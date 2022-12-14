@@ -1,5 +1,5 @@
-import { type } from "os";
 import { Dispatch, SetStateAction } from "react";
+import { Reservation } from "./serverState";
 import { cellType, tableStyle } from "./states";
 
 export type idInputModalProps = {
@@ -16,4 +16,9 @@ export type GridProps = {
   setSelectedCells: Dispatch<SetStateAction<cellType>>;
   tableStyles: tableStyle[];
   setTableStyles: Dispatch<SetStateAction<tableStyle[]>>;
+};
+
+export type SidebarListProps = {
+  reservations: Reservation[];
+  currentDate: Date;
 };

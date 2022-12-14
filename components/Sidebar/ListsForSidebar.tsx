@@ -1,15 +1,24 @@
-import { useFetchReservations } from "../pages/api/queries/reservation";
 import { MdExpandLess, MdExpandMore } from "react-icons/md";
+import { SidebarListProps } from "../../types/props";
 
-const Sidebar = () => {
-  const { reservations, error, loading } = useFetchReservations();
 
+const ListsForSidebar = ({ reservations, currentDate }: SidebarListProps) => {
   const showDetail = true;
 
+  const convertDateToDBformat = (dateProp: Date): string => {
+    return `${dateProp.getFullYear()}/${
+      dateProp.getMonth() + 1
+    }/${dateProp.getDate()}`;
+  };
+
+  const targetReservations = reservations.filter(
+    (value) => value.date === convertDateToDBformat(currentDate)
+  );
+
   const reservationLists: JSX.Element[] = [];
-  for (let i = 0; i < reservations.length; i++) {
+  for (let i = 0; i < targetReservations.length; i++) {
     const { id, date, timeSlot, PplNo, description, reservedBy, table } =
-      reservations[i];
+      targetReservations[i];
 
     reservationLists.push(
       <li
@@ -39,14 +48,7 @@ const Sidebar = () => {
     );
   }
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error! {error.message}</p>;
-
-  return (
-    <div className="flex min-h-screen w-56 flex-col overflow-y-auto rounded-lg bg-white pt-2 pb-6 shadow-lg">
-      <ul className="ml-3 space-y-2 tracking-wide">{reservationLists}</ul>
-    </div>
-  );
+  return <ul className="ml-3 space-y-2 tracking-wide">{reservationLists}</ul>;
 };
 
-export default Sidebar;
+export default ListsForSidebar;

@@ -20,8 +20,8 @@ function TableLayout() {
     );
   }
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error! {error.message}</p>;
+  if (loading) return <p className="text-black">Loading...</p>;
+  if (error) return <p className="text-red-700">Layout Error! {error.message}</p>;
 
   return (
     <div className="container mx-auto rounded-lg border border-gray-200 bg-stone-100 p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">
