@@ -1,10 +1,13 @@
+import { useEffect, useState } from "react";
 import { MdExpandLess, MdExpandMore } from "react-icons/md";
 import { SidebarListProps } from "../../types/props";
 
+type showDetailsState = {
+  id: string;
+  isShow: boolean;
+};
 
 const ListsForSidebar = ({ reservations, currentDate }: SidebarListProps) => {
-  const showDetail = true;
-
   const convertDateToDBformat = (dateProp: Date): string => {
     return `${dateProp.getFullYear()}/${
       dateProp.getMonth() + 1
@@ -15,22 +18,47 @@ const ListsForSidebar = ({ reservations, currentDate }: SidebarListProps) => {
     (value) => value.date === convertDateToDBformat(currentDate)
   );
 
+  const listClickHandler = (e: React.MouseEvent<HTMLElement>) => {
+    const { id } = e.currentTarget;
+    console.log("it is clicked", id);
+
+    setShowDetails((prevState) =>
+      prevState.map((obj) =>
+        obj.id === id ? { id: obj.id, isShow: !obj.isShow } : obj
+      )
+    );
+  };
+
+  const defaultState: Array<showDetailsState> = [];
+  for (let i = 0; i < targetReservations.length; i++) {
+    const { id } = targetReservations[i];
+    defaultState.push({
+      id,
+      isShow: false,
+    });
+  }
+  const [showDetails, setShowDetails] =
+    useState<Array<showDetailsState>>(defaultState);
+
   const reservationLists: JSX.Element[] = [];
   for (let i = 0; i < targetReservations.length; i++) {
     const { id, date, timeSlot, PplNo, description, reservedBy, table } =
       targetReservations[i];
 
+    const isShowArray = showDetails.find((item) => item.id === id);
+    const isShow = isShowArray ? isShowArray.isShow : false;
+
     reservationLists.push(
-      <li
-        key={i}
-        id={`${id}`}
-        className="min-w-max text-cyan-800 hover:bg-amber-100"
-      >
-        <p className="flex font-medium">
-          {showDetail ? <MdExpandLess /> : <MdExpandMore />}
+      <li key={i} id={`${id}`} className="min-w-max text-cyan-800">
+        <p
+          className="flex font-medium hover:bg-amber-100"
+          onClick={listClickHandler}
+          id={`${id}`}
+        >
+          {isShow ? <MdExpandLess /> : <MdExpandMore />}
           {date} {timeSlot} {PplNo}ppl
         </p>
-        {showDetail && (
+        {isShow && (
           <>
             <p>
               {table.tableID}{" "}

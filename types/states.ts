@@ -9,3 +9,8 @@ export type cellType = {
   startCell: number;
   endCell: number;
 };
+
+export type showDetailsState = {
+  id: string;
+  isShow: boolean;
+};
