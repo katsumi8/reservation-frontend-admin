@@ -1,3 +1,4 @@
+import { __Schema } from "graphql";
 import { useEffect, useState } from "react";
 import { MdExpandLess, MdExpandMore } from "react-icons/md";
 import { SidebarListProps } from "../../types/props";
@@ -8,6 +9,8 @@ type showDetailsState = {
 };
 
 const ListsForSidebar = ({ reservations, currentDate }: SidebarListProps) => {
+  const [showDetails, setShowDetails] = useState<Array<showDetailsState>>([]);
+
   const convertDateToDBformat = (dateProp: Date): string => {
     return `${dateProp.getFullYear()}/${
       dateProp.getMonth() + 1
@@ -20,7 +23,6 @@ const ListsForSidebar = ({ reservations, currentDate }: SidebarListProps) => {
 
   const listClickHandler = (e: React.MouseEvent<HTMLElement>) => {
     const { id } = e.currentTarget;
-    console.log("it is clicked", id);
 
     setShowDetails((prevState) =>
       prevState.map((obj) =>
@@ -29,18 +31,21 @@ const ListsForSidebar = ({ reservations, currentDate }: SidebarListProps) => {
     );
   };
 
-  const defaultState: Array<showDetailsState> = [];
-  for (let i = 0; i < targetReservations.length; i++) {
-    const { id } = targetReservations[i];
-    defaultState.push({
-      id,
-      isShow: false,
-    });
-  }
-  const [showDetails, setShowDetails] =
-    useState<Array<showDetailsState>>(defaultState);
-
   const reservationLists: JSX.Element[] = [];
+
+  useEffect(() => {
+    const listDefaultValue: showDetailsState[] = targetReservations.map(
+      (elm) => {
+        return {
+          id: elm.id,
+          isShow: false,
+        };
+      }
+    );
+
+    setShowDetails(listDefaultValue);
+  }, [currentDate]);
+
   for (let i = 0; i < targetReservations.length; i++) {
     const { id, date, timeSlot, PplNo, description, reservedBy, table } =
       targetReservations[i];

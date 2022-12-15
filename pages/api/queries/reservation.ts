@@ -1,4 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
+import { useEffect } from "react";
 import { Reservation } from "../../../types/serverState";
 
 const GET_RESERVATIONS = gql`
@@ -33,6 +34,17 @@ type dataTypeForReservation = {
 };
 
 export const useFetchReservations = () => {
+
+  // useEffect(() => {
+  //   const { data, error, loading } = useQuery(GET_RESERVATIONS);
+  //   const reservations = data ? (data as dataTypeForReservation).reservTable : [];
+  
+  
+  //   return  {
+  //     reservations, error, loading 
+  //   }
+  // }, [])
+  
   const { data, error, loading } = useQuery(GET_RESERVATIONS);
   const reservations = data ? (data as dataTypeForReservation).reservTable : [];
 

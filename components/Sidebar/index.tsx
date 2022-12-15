@@ -4,8 +4,11 @@ import { useState } from "react";
 import ListsForSidebar from "./ListsForSidebar";
 
 const Sidebar = () => {
+
+  
   const { reservations, error, loading } = useFetchReservations();
   const [currentDate, setCurrentDate] = useState(new Date());
+  console.log(reservations)
 
   const convertDateToString = (dateProp: Date): string => {
     return `${dateProp.getDate()}.${dateProp.getMonth() + 1}.${dateProp
