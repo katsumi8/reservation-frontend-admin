@@ -7,7 +7,11 @@ import TableLayout from "./TableLayout";
 function CurrentTables() {
   return (
     <>
-      <Header />
+      <Header
+        rightBtnText={"Edit Table"}
+        rightBtnLink={"/TableEditor"}
+        pageTitle="Table and Reservations"
+      />
       <MainContent>
         <TableLayout />
       </MainContent>

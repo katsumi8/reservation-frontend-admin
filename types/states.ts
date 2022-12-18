@@ -14,3 +14,4 @@ export type showDetailsState = {
   id: string;
   isShow: boolean;
 };
+

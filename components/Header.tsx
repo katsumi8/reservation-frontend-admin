@@ -1,14 +1,55 @@
-import { ReactNode } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
-const Header = ({ children }: { children?: ReactNode }) => {
+type props = {
+  pageTitle: string;
+  rightBtnText: string;
+  rightBtnLink: string;
+  leftBtnText?: string;
+  leftBtnLink?: string;
+};
+
+const Header = ({
+  pageTitle,
+  rightBtnText,
+  rightBtnLink,
+  leftBtnText,
+  leftBtnLink,
+}: props) => {
+  const router = useRouter();
+
+  const handleClick = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+
+    router.push(rightBtnLink);
+  };
+
   return (
-    <div>
-      <header className="flex items-center justify-between bg-neutral-50 p-4 border-stone-300 border">
-        <div className="flex text-black">Left</div>
-        <div className="flex text-black">Right</div>
-      </header>
-      {/* <main>{children}</main> */}
-    </div>
+    <header className="border border-stone-300 bg-sky-200 p-4">
+      <div className="flex justify-center">
+        {leftBtnText && leftBtnLink && (
+          <div className="mr-auto ml-0">
+            <Link href={leftBtnLink}>
+              <a className="text-black">{leftBtnText}</a>
+            </Link>
+          </div>
+        )}
+        <p
+          className="text-black"
+          style={{
+            marginLeft: "auto",
+            marginRight: leftBtnText ? "auto" : "none",
+          }}
+        >
+          {pageTitle}
+        </p>
+        <div className="mr-0 ml-auto">
+          <Link href={rightBtnLink} onClick={handleClick}>
+            <a className="text-black">{rightBtnText} </a>
+          </Link>
+        </div>
+      </div>
+    </header>
   );
 };
 

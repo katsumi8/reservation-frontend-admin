@@ -2,11 +2,9 @@ import { __Schema } from "graphql";
 import { useEffect, useState } from "react";
 import { MdExpandLess, MdExpandMore } from "react-icons/md";
 import { SidebarListProps } from "../../types/props";
+import { showDetailsState } from "../../types/states";
 
-type showDetailsState = {
-  id: string;
-  isShow: boolean;
-};
+
 
 const ListsForSidebar = ({ reservations, currentDate }: SidebarListProps) => {
   const [showDetails, setShowDetails] = useState<Array<showDetailsState>>([]);
@@ -44,6 +42,7 @@ const ListsForSidebar = ({ reservations, currentDate }: SidebarListProps) => {
     );
 
     setShowDetails(listDefaultValue);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentDate]);
 
   for (let i = 0; i < targetReservations.length; i++) {
@@ -54,7 +53,7 @@ const ListsForSidebar = ({ reservations, currentDate }: SidebarListProps) => {
     const isShow = isShowArray ? isShowArray.isShow : false;
 
     reservationLists.push(
-      <li key={i} id={`${id}`} className="min-w-max text-cyan-800">
+      <li key={i} id={`${id}`} className="min-w-max text-cyan-800 select-none">
         <p
           className="flex font-medium hover:bg-amber-100"
           onClick={listClickHandler}
