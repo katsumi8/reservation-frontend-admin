@@ -4,20 +4,13 @@ import { MdExpandLess, MdExpandMore } from "react-icons/md";
 import { SidebarListProps } from "../../types/props";
 import { showDetailsState } from "../../types/states";
 
+const ListsForSidebar = ({ reservations, listDefaultValue }: SidebarListProps) => {
+  const [showDetails, setShowDetails] = useState<Array<showDetailsState>>(listDefaultValue);
 
 
-const ListsForSidebar = ({ reservations, currentDate }: SidebarListProps) => {
-  const [showDetails, setShowDetails] = useState<Array<showDetailsState>>([]);
 
-  const convertDateToDBformat = (dateProp: Date): string => {
-    return `${dateProp.getFullYear()}/${
-      dateProp.getMonth() + 1
-    }/${dateProp.getDate()}`;
-  };
+  if (reservations.length === 0) return <></>;
 
-  const targetReservations = reservations.filter(
-    (value) => value.date === convertDateToDBformat(currentDate)
-  );
 
   const listClickHandler = (e: React.MouseEvent<HTMLElement>) => {
     const { id } = e.currentTarget;
@@ -29,31 +22,16 @@ const ListsForSidebar = ({ reservations, currentDate }: SidebarListProps) => {
     );
   };
 
+
   const reservationLists: JSX.Element[] = [];
-
-  useEffect(() => {
-    const listDefaultValue: showDetailsState[] = targetReservations.map(
-      (elm) => {
-        return {
-          id: elm.id,
-          isShow: false,
-        };
-      }
-    );
-
-    setShowDetails(listDefaultValue);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentDate]);
-
-  for (let i = 0; i < targetReservations.length; i++) {
+  for (let i = 0; i < reservations.length; i++) {
     const { id, date, timeSlot, PplNo, description, reservedBy, table } =
-      targetReservations[i];
-
+      reservations[i];
     const isShowArray = showDetails.find((item) => item.id === id);
     const isShow = isShowArray ? isShowArray.isShow : false;
 
     reservationLists.push(
-      <li key={i} id={`${id}`} className="min-w-max text-cyan-800 select-none">
+      <li key={i} id={`${id}`} className="min-w-max select-none text-cyan-800">
         <p
           className="flex font-medium hover:bg-amber-100"
           onClick={listClickHandler}
@@ -65,7 +43,7 @@ const ListsForSidebar = ({ reservations, currentDate }: SidebarListProps) => {
         {isShow && (
           <>
             <p>
-              {table.tableID}{" "}
+              {table.tableName}{" "}
               <span className="focus:shadow-outline rounded bg-blue-500 px-px text-white shadow hover:bg-blue-400 focus:outline-none">
                 edit
               </span>

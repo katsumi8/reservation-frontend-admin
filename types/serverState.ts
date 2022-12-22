@@ -9,7 +9,7 @@ export type tableInputState = {
 
 export type Table = {
   id: string;
-  tableID: string;
+  tableName: string;
   capability: number;
   isReserved: boolean;
   position: string;

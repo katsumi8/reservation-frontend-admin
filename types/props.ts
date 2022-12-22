@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import { Reservation } from "./serverState";
-import { cellType, tableStyle } from "./states";
+import { cellType, showDetailsState, tableStyle } from "./states";
 
 export type idInputModalProps = {
   selectedCells: { startCell: number; endCell: number };
@@ -20,5 +20,13 @@ export type GridProps = {
 
 export type SidebarListProps = {
   reservations: Reservation[];
-  currentDate: Date;
+  listDefaultValue: showDetailsState[];
+};
+
+export type HeaderProps = {
+  pageTitle: string;
+  rightBtnText: string;
+  rightBtnLink: string;
+  leftBtnText?: string;
+  leftBtnLink?: string;
 };

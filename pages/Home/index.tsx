@@ -4,7 +4,7 @@ import CurrentTables from "./Contents";
 
 const title = "Check reservations";
 
-export default function TableEditor() {
+export default function Home() {
   return (
     <div>
       <Head>

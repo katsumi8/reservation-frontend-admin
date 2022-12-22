@@ -1,13 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-
-type props = {
-  pageTitle: string;
-  rightBtnText: string;
-  rightBtnLink: string;
-  leftBtnText?: string;
-  leftBtnLink?: string;
-};
+import { HeaderProps } from "../types/props";
 
 const Header = ({
   pageTitle,
@@ -15,7 +8,7 @@ const Header = ({
   rightBtnLink,
   leftBtnText,
   leftBtnLink,
-}: props) => {
+}: HeaderProps) => {
   const router = useRouter();
 
   const handleClick = (e: { preventDefault: () => void }) => {

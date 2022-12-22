@@ -1,5 +1,5 @@
 import React from "react";
-import { useFetchTableData } from "../../../api/queries/tableData";
+import { useFetchTableData } from "../../../../components/hooks/queries/tableData";
 
 function TableLayout() {
   const { tableStyles, error, loading } = useFetchTableData();
@@ -9,19 +9,20 @@ function TableLayout() {
     tableLayout.push(
       <div
         key={i}
-        id={`${tableStyles[i].tableID}`}
+        id={`${tableStyles[i].tableName}`}
         className="rounded-lg border-blue-500 bg-teal-100 p-1"
         style={{
           gridArea: tableStyles[i].position,
         }}
       >
-        <p className="m-0">{tableStyles[i].tableID}</p>
+        <p className="m-0">{tableStyles[i].tableName}</p>
       </div>
     );
   }
 
   if (loading) return <p className="text-black">Loading...</p>;
-  if (error) return <p className="text-red-700">Layout Error! {error.message}</p>;
+  if (error)
+    return <p className="text-red-700">Layout Error! {error.message}</p>;
 
   return (
     <div className="container mx-auto rounded-lg border border-gray-200 bg-stone-100 p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">

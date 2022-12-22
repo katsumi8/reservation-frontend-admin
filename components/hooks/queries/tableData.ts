@@ -5,7 +5,7 @@ const GET_TABLES = gql`
   query {
     seatmap {
       id
-      tableID
+      tableName
       capability
       isReserved
       isRounded

@@ -1,14 +1,29 @@
-import { useFetchReservations } from "../../pages/api/queries/reservation";
 import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 import { useState } from "react";
 import ListsForSidebar from "./ListsForSidebar";
+import { useFetchSpecificReservations } from "../hooks/queries/reservationsWithDate";
+import { showDetailsState } from "../../types/states";
 
 const Sidebar = () => {
-
-  
-  const { reservations, error, loading } = useFetchReservations();
   const [currentDate, setCurrentDate] = useState(new Date());
-  console.log(reservations)
+  const convertDateToDBformat = (dateProp: Date): string => {
+    return `${dateProp.getFullYear()}/${
+      dateProp.getMonth() + 1
+    }/${dateProp.getDate()}`;
+  };
+
+  const { reservationsWithDate, error, loading } = useFetchSpecificReservations(
+    convertDateToDBformat(currentDate)
+  );
+
+  const listDefaultValue: showDetailsState[] = reservationsWithDate.map(
+    (elm) => {
+      return {
+        id: elm.id,
+        isShow: false,
+      };
+    }
+  );
 
   const convertDateToString = (dateProp: Date): string => {
     return `${dateProp.getDate()}.${dateProp.getMonth() + 1}.${dateProp
@@ -54,7 +69,10 @@ const Sidebar = () => {
           <BiRightArrow />
         </div>
       </div>
-      <ListsForSidebar currentDate={currentDate} reservations={reservations} />
+      <ListsForSidebar
+        reservations={reservationsWithDate}
+        listDefaultValue={listDefaultValue}
+      />
     </div>
   );
 };
