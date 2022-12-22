@@ -1,7 +1,10 @@
 // not yes\t
 
 import { useState } from "react";
-import { idInputModalHooksProps, idInputModalProps } from "../../../../types/props";
+import {
+  idInputModalHooksProps,
+  idInputModalProps,
+} from "../../../../types/props";
 import { gridColNum } from "../const";
 
 export const useModal = ({
@@ -39,10 +42,10 @@ export const useModal = ({
       setTableStyles((prevCells) => [
         ...prevCells,
         {
-          id: tableId,
+          tableName: tableId,
           position: gridArea,
-          isRound: isChecked,
-          capability,
+          isRounded: isChecked,
+          capability: Number(capability),
         },
       ]);
 

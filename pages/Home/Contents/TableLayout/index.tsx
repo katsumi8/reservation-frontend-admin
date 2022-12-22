@@ -6,16 +6,26 @@ function TableLayout() {
 
   const tableLayout: JSX.Element[] = [];
   for (let i = 0; i < tableStyles.length; i++) {
+    const duplicateTable = tableStyles.filter(
+      (obj) => obj.tableName === tableStyles[i].tableName
+    );
+    const duplicateLength = duplicateTable.length;
+    const firstDuplicatedId = duplicateTable[0].id;
+
     tableLayout.push(
       <div
         key={i}
         id={`${tableStyles[i].tableName}`}
-        className="rounded-lg border-blue-500 bg-teal-100 p-1"
+        className="flex items-center justify-center rounded-lg bg-teal-100"
         style={{
           gridArea: tableStyles[i].position,
         }}
       >
-        <p className="m-0">{tableStyles[i].tableName}</p>
+        {duplicateLength < 1 ? (
+          <p>{tableStyles[i].tableName}</p>
+        ) : firstDuplicatedId === tableStyles[i].id ? (
+          <p>{tableStyles[i].tableName}</p>
+        ) : null}
       </div>
     );
   }

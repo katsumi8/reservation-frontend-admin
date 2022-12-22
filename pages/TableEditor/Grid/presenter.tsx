@@ -45,19 +45,16 @@ function TableGrid({
       >
         <button
           className="float-right"
-          onClick={(e) => deleteClickHandler(Number(tableStyles[i].id))}
+          onClick={(e) => deleteClickHandler(tableStyles[i].tableName)}
           style={{ pointerEvents: "auto" }}
         >
           X
         </button>
-        <p className="m-0">
-          ID: {tableStyles[i].id}
-        </p>
+        <p className="m-0">{tableStyles[i].tableName}</p>
       </div>
     );
   }
 
-  console.log({coloredCells})
 
   return (
     <div className="container absolute mx-auto overflow-scroll rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">

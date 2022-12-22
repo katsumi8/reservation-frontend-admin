@@ -17,8 +17,8 @@ export const useGridEditor = ({
     setSelectedCells((prevState) => ({ ...prevState, endCell: Number(id) }));
   };
 
-  const deleteClickHandler = (id: number) => {
-    setTableStyles(tableStyles.filter((item) => Number(item.id) !== id));
+  const deleteClickHandler = (tableName: string) => {
+    setTableStyles(tableStyles.filter((item) => item.tableName !== tableName));
   };
 
   return {

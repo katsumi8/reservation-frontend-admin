@@ -8,13 +8,13 @@ export type tableInputState = {
 };
 
 export type Table = {
-  id: string;
+  id?: string;
   tableName: string;
   capability: number;
-  isReserved: boolean;
+  isReserved?: boolean;
   position: string;
   isRounded: boolean;
-  isUnReservable: boolean;
+  isUnReservable?: boolean;
 };
 
 export type Reservation = {

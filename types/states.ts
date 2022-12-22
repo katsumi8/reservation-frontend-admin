@@ -1,8 +1,11 @@
 export type tableStyle = {
-  id: string;
-  position: string;
-  isRound: boolean;
+  id?: string;
+  tableName: string;
   capability: string;
+  isReserved?: boolean;
+  position: string;
+  isRounded: boolean;
+  isUnReservable?: boolean;
 };
 
 export type cellType = {
@@ -14,4 +17,3 @@ export type showDetailsState = {
   id: string;
   isShow: boolean;
 };
-
