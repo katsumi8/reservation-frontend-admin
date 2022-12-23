@@ -40,7 +40,6 @@ export const useFetchSpecificReservations = (reservedDate: string) => {
   const reservationsWithDate = data
     ? (data as dataTypeForReservation).reservationReadWithDate
     : [];
-  console.log(reservationsWithDate);
 
   return { reservationsWithDate, error, loading };
 };

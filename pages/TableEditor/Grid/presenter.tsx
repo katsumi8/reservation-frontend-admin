@@ -1,5 +1,5 @@
 import React from "react";
-import { GridProps } from "../../../types/props";
+import { TableGridProps } from "../../../types/props";
 import { gridColNum } from "./const";
 import { useGridEditor } from "./hooks";
 
@@ -8,7 +8,7 @@ function TableGrid({
   setSelectedCells,
   tableStyles,
   setTableStyles,
-}: GridProps) {
+}: TableGridProps) {
   const { mouseClickStartHandler, mouseClickLeaveHandler, deleteClickHandler } =
     useGridEditor({
       setShowModal,
@@ -38,23 +38,21 @@ function TableGrid({
       <div
         key={i}
         id={`${tableStyles[i].id}`}
-        className="rounded-lg border-blue-500 bg-red-50 p-1"
+        className="rounded-lg border-blue-500 bg-red-50"
         style={{
           gridArea: tableStyles[i].position,
         }}
       >
         <button
-          className="float-right"
+          className="pointer-events-auto float-right"
           onClick={(e) => deleteClickHandler(tableStyles[i].tableName)}
-          style={{ pointerEvents: "auto" }}
         >
           X
         </button>
-        <p className="m-0">{tableStyles[i].tableName}</p>
+        <p className="mx-auto">{tableStyles[i].tableName}</p>
       </div>
     );
   }
-
 
   return (
     <div className="container absolute mx-auto overflow-scroll rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">

@@ -10,7 +10,7 @@ export type tableInputState = {
 export type Table = {
   id?: string;
   tableName: string;
-  capability: number;
+  capability: string;
   isReserved?: boolean;
   position: string;
   isRounded: boolean;

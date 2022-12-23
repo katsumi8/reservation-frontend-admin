@@ -1,16 +1,17 @@
 import { __Schema } from "graphql";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { MdExpandLess, MdExpandMore } from "react-icons/md";
 import { SidebarListProps } from "../../types/props";
 import { showDetailsState } from "../../types/states";
 
-const ListsForSidebar = ({ reservations, listDefaultValue }: SidebarListProps) => {
-  const [showDetails, setShowDetails] = useState<Array<showDetailsState>>(listDefaultValue);
-
-
+const ListsForSidebar = ({
+  reservations,
+  listDefaultValue,
+}: SidebarListProps) => {
+  const [showDetails, setShowDetails] =
+    useState<Array<showDetailsState>>(listDefaultValue);
 
   if (reservations.length === 0) return <></>;
-
 
   const listClickHandler = (e: React.MouseEvent<HTMLElement>) => {
     const { id } = e.currentTarget;
@@ -21,7 +22,6 @@ const ListsForSidebar = ({ reservations, listDefaultValue }: SidebarListProps) =
       )
     );
   };
-
 
   const reservationLists: JSX.Element[] = [];
   for (let i = 0; i < reservations.length; i++) {
@@ -43,10 +43,10 @@ const ListsForSidebar = ({ reservations, listDefaultValue }: SidebarListProps) =
         {isShow && (
           <>
             <p>
-              {table.tableName}{" "}
-              <span className="focus:shadow-outline rounded bg-blue-500 px-px text-white shadow hover:bg-blue-400 focus:outline-none">
+              {table.tableName}
+              {/* <span className="focus:shadow-outline rounded bg-blue-500 px-px text-white shadow hover:bg-blue-400 focus:outline-none">
                 edit
-              </span>
+              </span> */}
             </p>
             <p>name: {reservedBy.name}</p>
             <p>email: {reservedBy.email}</p>

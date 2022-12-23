@@ -1,11 +1,11 @@
-import { GridProps } from "../../../types/props";
+import { TableGridProps } from "../../../types/props";
 
 export const useGridEditor = ({
   setShowModal,
   setSelectedCells,
   tableStyles,
   setTableStyles,
-}: GridProps) => {
+}: TableGridProps) => {
   const mouseClickStartHandler = (e: React.MouseEvent<HTMLElement>): void => {
     const { id } = e.currentTarget;
     setSelectedCells((prevState) => ({ ...prevState, startCell: Number(id) }));

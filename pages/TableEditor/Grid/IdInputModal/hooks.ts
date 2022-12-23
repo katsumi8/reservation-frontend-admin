@@ -45,7 +45,7 @@ export const useModal = ({
           tableName: tableId,
           position: gridArea,
           isRounded: isChecked,
-          capability: Number(capability),
+          capability,
         },
       ]);
 

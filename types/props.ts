@@ -11,9 +11,14 @@ export type idInputModalProps = {
 
 export type idInputModalHooksProps = Omit<idInputModalProps, "showModal">;
 
-export type GridProps = {
+export type TableGridProps = {
   setShowModal: Dispatch<SetStateAction<boolean>>;
   setSelectedCells: Dispatch<SetStateAction<cellType>>;
+  tableStyles: Table[];
+  setTableStyles: Dispatch<SetStateAction<Table[]>>;
+};
+
+export type GridProps = {
   tableStyles: Table[];
   setTableStyles: Dispatch<SetStateAction<Table[]>>;
 };
@@ -29,4 +34,6 @@ export type HeaderProps = {
   rightBtnLink: string;
   leftBtnText?: string;
   leftBtnLink?: string;
+  mutationTables?: Table[];
+  fetchedTables?: Table[];
 };
