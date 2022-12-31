@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { HeaderProps } from "../src/types/props";
-import { useTableCreator } from "./hooks/mutations/tableCreate";
-import { useTableDelete } from "./hooks/mutations/tableDelete";
+import { HeaderProps } from "@src/types/props"; 
+import { useTableCreator } from "../utils/mutations/tableCreate";
+import { useTableDelete } from "../utils/mutations/tableDelete";
 
 const Header = ({
   pageTitle,

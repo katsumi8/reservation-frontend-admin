@@ -1,8 +1,8 @@
 import { __Schema } from "graphql";
 import { useState } from "react";
 import { MdExpandLess, MdExpandMore } from "react-icons/md";
-import { SidebarListProps } from "../../src/types/props";
-import { showDetailsState } from "../../src/types/states";
+import { SidebarListProps } from "@src/types/props";
+import { showDetailsState } from "@src/types/states"; 
 
 const ListsForSidebar = ({
   reservations,

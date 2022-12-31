@@ -1,35 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Configuration under the src directory
 
-## Getting Started
+components/ - Presentational components
+  Place the UI component (.tsx) that defines the "look and feel".
+  This component does not have any logic, but purely draws the given props.
+  Components that have some logic (data fetching with hooks, state management) should be placed in the containers directory instead.
+  This directory can be further hierarchized by category.
+containers/ - Container components
+  Place components (.tsx) that define "behavior".
+  It contains the logic for fetching data through hook functions, saving and changing states, etc., and ultimately passes the data to be displayed as props objects in other components.
+  Under this directory, the components can be further hierarchized by category
+hooks/ - Custom hooks
+  Place custom React hooks (e.g. useAuth.ts).
+  The application logic should not be written in the component, but implemented as hook functions as much as possible.
+  Basically, hook functions are called from components under the comtainers directory or from other hook functions.
+pages/ - Page components
+  Place Next.js page components (.tsx), _app.tsx and _document.tsx.
+  The files (xxx.tsx) are loaded according to the URL path when the website is accessed.
+  This corresponds to Templates (Pages) in Atomic Design.
+types/ - Type definitions
+  This is where TypeScript type definitions shared by multiple files are placed.
+  Types exported from index.ts are imported as import { UserInfo } from '. /types'.
+utils/ - Other utilities
+  Place utilities (configs, data fetch functions, etc.) that do not fall into any of the above categories.
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# shareyou

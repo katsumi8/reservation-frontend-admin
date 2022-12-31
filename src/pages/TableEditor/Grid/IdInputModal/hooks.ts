@@ -5,7 +5,7 @@ import {
   idInputModalHooksProps,
   idInputModalProps,
 } from "../../../../src/types/props";
-import { gridColNum } from "../const";
+import { gridColNum } from "../../../../const";
 
 export const useModal = ({
   selectedCells,
