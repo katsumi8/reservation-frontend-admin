@@ -11,6 +11,7 @@ export default function Grid({ tableStyles, setTableStyles }: GridProps) {
   });
   const [showModal, setShowModal] = useState<boolean>(false);
 
+  console.log(tableStyles)
   return (
     <>
       <TableGrid

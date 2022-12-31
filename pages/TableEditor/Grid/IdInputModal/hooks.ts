@@ -27,7 +27,12 @@ export const useModal = ({
     const colStart = Number(startCell) - (rowStart - 1) * gridColNum + 1;
     const rowEnd = Math.ceil(Number(endCell) / gridColNum) + 1;
     const colEnd = Number(endCell) - (rowEnd - 2) * gridColNum + 2;
-    const gridArea = `${rowStart} / ${colStart} / ${rowEnd} / ${colEnd}`;
+    const gridArea =
+      colStart === 16 && colEnd === 17
+        ? `${rowStart + 1} / ${colStart - 15} / ${rowEnd} / ${colEnd - 15}`
+        : colStart === 16
+        ? `${rowStart} / ${colStart - 15} / ${rowEnd} / ${colEnd}`
+        : `${rowStart} / ${colStart} / ${rowEnd} / ${colEnd}`;
     const rowDiff = rowEnd - rowStart;
     const colDiff = colEnd - colStart;
     const capability =
