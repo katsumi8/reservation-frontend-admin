@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Modal from "react-modal";
-import { idInputModalProps } from "../../../../types/props";
+import { idInputModalProps } from "../../../../src/types/props";
 import { useModal } from "./hooks";
 
 const IdInputModal = ({

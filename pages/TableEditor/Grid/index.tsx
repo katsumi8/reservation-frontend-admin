@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { GridProps } from "../../../types/props";
-import { cellType } from "../../../types/states";
+import { GridProps } from "../../../src/types/props";
+import { cellType } from "../../../src/types/states";
 import IdInputModal from "./IdInputModal";
 import TableGrid from "./presenter";
 

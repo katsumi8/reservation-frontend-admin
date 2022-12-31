@@ -4,7 +4,7 @@ import { useState } from "react";
 import {
   idInputModalHooksProps,
   idInputModalProps,
-} from "../../../../types/props";
+} from "../../../../src/types/props";
 import { gridColNum } from "../const";
 
 export const useModal = ({

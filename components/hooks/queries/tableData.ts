@@ -1,5 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
-import { Table } from "../../../types/serverState";
+import { Table } from "../../../src/types/serverState";
 
 const GET_TABLES = gql`
   query {

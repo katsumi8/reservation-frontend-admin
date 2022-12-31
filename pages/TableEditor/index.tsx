@@ -2,7 +2,7 @@ import Head from "next/head";
 import React, { useState } from "react";
 import Header from "../../components/Header";
 import { useFetchTableData } from "../../components/hooks/queries/tableData";
-import { Table } from "../../types/serverState";
+import { Table } from "../../src/types/serverState";
 import Grid from "./Grid";
 
 const title = "Edit the table layout";

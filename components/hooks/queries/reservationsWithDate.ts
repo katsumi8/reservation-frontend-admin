@@ -1,5 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
-import { Reservation } from "../../../types/serverState";
+import { Reservation } from "../../../src/types/serverState";
 
 const GET_RESERVATIONS_W_DATE = gql`
   query ($reservedDate: String!) {

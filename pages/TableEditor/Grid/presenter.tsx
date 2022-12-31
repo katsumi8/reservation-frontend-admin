@@ -1,5 +1,5 @@
 import React from "react";
-import { TableGridProps } from "../../../types/props";
+import { TableGridProps } from "../../../src/types/props";
 import { gridColNum } from "./const";
 import { useGridEditor } from "./hooks";
 

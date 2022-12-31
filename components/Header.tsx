@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { HeaderProps } from "../types/props";
+import { HeaderProps } from "../src/types/props";
 import { useTableCreator } from "./hooks/mutations/tableCreate";
 import { useTableDelete } from "./hooks/mutations/tableDelete";
 

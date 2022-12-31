@@ -2,7 +2,7 @@ import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 import { useState } from "react";
 import ListsForSidebar from "./ListsForSidebar";
 import { useFetchSpecificReservations } from "../hooks/queries/reservationsWithDate";
-import { showDetailsState } from "../../types/states";
+import { showDetailsState } from "../../src/types/states";
 
 const Sidebar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
