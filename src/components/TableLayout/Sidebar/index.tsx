@@ -9,7 +9,6 @@ const Sidebar = () => {
   const { convertDateToDBformat, convertDateToString, isToday } =
     useDateProcessor();
 
-
   const { reservationsWithDate, error, loading } = useFetchSpecificReservations(
     convertDateToDBformat(currentDate)
   );
@@ -22,7 +21,6 @@ const Sidebar = () => {
       };
     }
   );
-
 
   const dateIncreaseHandler = () => {
     setCurrentDate(new Date(currentDate.setDate(currentDate.getDate() + 1)));

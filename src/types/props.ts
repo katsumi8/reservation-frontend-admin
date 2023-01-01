@@ -50,3 +50,8 @@ export type SidebarPresenterProps = {
   loading: boolean;
   error: ApolloError | undefined;
 };
+
+export type ListsOfReservationsPresenterProps = {
+  reservations: Reservation[];
+  reservationLists: JSX.Element[];
+};

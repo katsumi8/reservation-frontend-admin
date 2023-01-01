@@ -2,14 +2,15 @@ import { __Schema } from "graphql";
 import { useState } from "react";
 import { MdExpandLess, MdExpandMore } from "react-icons/md";
 import { SidebarListProps } from "@src/types/props";
-import { showDetailsState } from "@src/types/states"; 
+import { ShowDetailsState } from "@src/types/states";
+import { ListsOfReservationsPresenter } from "./presenter";
 
-const ListsForSidebar = ({
+const ListsOfReservations = ({
   reservations,
   listDefaultValue,
 }: SidebarListProps) => {
   const [showDetails, setShowDetails] =
-    useState<Array<showDetailsState>>(listDefaultValue);
+    useState<Array<ShowDetailsState>>(listDefaultValue);
 
   if (reservations.length === 0) return <></>;
 
@@ -58,7 +59,12 @@ const ListsForSidebar = ({
     );
   }
 
-  return <ul className="ml-3 space-y-2 tracking-wide">{reservationLists}</ul>;
+  return (
+    <ListsOfReservationsPresenter
+      reservations={reservations}
+      reservationLists={reservationLists}
+    />
+  );
 };
 
-export default ListsForSidebar;
+export default ListsOfReservations;

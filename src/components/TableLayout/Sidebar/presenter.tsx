@@ -1,7 +1,7 @@
 import { SidebarPresenterProps } from "@src/types/props";
 import React from "react";
 import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
-import ListsForSidebar from "./ListsForSidebar";
+import ListsOfReservations from "./ListOfReservations";
 
 export const SidebarPresenter = ({
   dateDecreaseHandler,
@@ -20,8 +20,8 @@ export const SidebarPresenter = ({
     return (
       <p className="text-red-700">Reservation list Error! {error.message}</p>
     );
-  
-    return (
+
+  return (
     <div className="flex min-h-screen w-56 flex-col overflow-y-auto rounded-lg bg-white pt-2 pb-6 shadow-lg">
       <div className="mx-auto mb-5 flex">
         <div
@@ -40,7 +40,7 @@ export const SidebarPresenter = ({
           <BiRightArrow />
         </div>
       </div>
-      <ListsForSidebar
+      <ListsOfReservations
         reservations={reservationsWithDate}
         listDefaultValue={listDefaultValue}
       />
