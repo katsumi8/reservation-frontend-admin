@@ -1,6 +1,7 @@
+import { ApolloError } from "@apollo/client";
 import { Dispatch, SetStateAction } from "react";
 import { Reservation, Table } from "./serverState";
-import { cellType, showDetailsState, tableStyle } from "./states";
+import { cellType, ShowDetailsState } from "./states";
 
 export type idInputModalProps = {
   selectedCells: { startCell: number; endCell: number };
@@ -25,7 +26,7 @@ export type GridProps = {
 
 export type SidebarListProps = {
   reservations: Reservation[];
-  listDefaultValue: showDetailsState[];
+  listDefaultValue: ShowDetailsState[];
 };
 
 export type HeaderProps = {
@@ -36,4 +37,16 @@ export type HeaderProps = {
   leftBtnLink?: string;
   mutationTables?: Table[];
   fetchedTables?: Table[];
+};
+
+export type SidebarPresenterProps = {
+  dateDecreaseHandler: () => void;
+  dateIncreaseHandler: () => void;
+  currentDate: Date;
+  reservationsWithDate: Reservation[];
+  listDefaultValue: ShowDetailsState[];
+  convertDateToString: (dateProp: Date) => string;
+  isToday: (dateProp: Date) => boolean;
+  loading: boolean;
+  error: ApolloError | undefined;
 };

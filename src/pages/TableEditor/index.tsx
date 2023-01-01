@@ -1,8 +1,8 @@
 import Head from "next/head";
 import React, { useState } from "react";
 import Header from "../../components/Header";
-import { useFetchTableData } from "../../components/hooks/queries/tableData";
-import { Table } from "../../src/types/serverState";
+import { useFetchTableData } from "@src/utils/queries/tableData";
+import type { Table} from "@src/types/serverState"
 import Grid from "./Grid";
 
 const title = "Edit the table layout";

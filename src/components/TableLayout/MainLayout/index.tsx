@@ -1,6 +1,6 @@
 import React from "react";
 import { useFetchTableData } from "@src/utils/queries/tableData";
-import MainLayoutPresenter from "./Presenter";
+import MainLayoutPresenter from "./presenter";
 
 function MainLayout() {
   const { tableStyles, error, loading } = useFetchTableData();

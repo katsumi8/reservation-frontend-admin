@@ -1,14 +1,12 @@
 ### Configuration under the src directory
 
-components/ - Presentational components
-  Place the UI component (.tsx) that defines the "look and feel".
+components/ - Presentational components and Container components
+  Place the UI component (presenter.tsx) that defines the "look and feel".
   This component does not have any logic, but purely draws the given props.
   Components that have some logic (data fetching with hooks, state management) should be placed in the containers directory instead.
-  This directory can be further hierarchized by category.
-containers/ - Container components
-  Place components (.tsx) that define "behavior".
+  Place components (index.tsx) that define "behavior".
   It contains the logic for fetching data through hook functions, saving and changing states, etc., and ultimately passes the data to be displayed as props objects in other components.
-  Under this directory, the components can be further hierarchized by category
+  This directory can be further hierarchized by category.
 hooks/ - Custom hooks
   Place custom React hooks (e.g. useAuth.ts).
   The application logic should not be written in the component, but implemented as hook functions as much as possible.

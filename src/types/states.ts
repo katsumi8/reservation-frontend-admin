@@ -13,7 +13,7 @@ export type cellType = {
   endCell: number;
 };
 
-export type showDetailsState = {
+export type ShowDetailsState = {
   id: string;
   isShow: boolean;
 };
