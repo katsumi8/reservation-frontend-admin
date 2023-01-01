@@ -11,31 +11,28 @@ function HeaderPresenter({
   handleClick,
 }: HeaderPresenterProps) {
   return (
-    <header className="border border-stone-300 bg-sky-200 p-4">
-      <div className="flex justify-center">
+    <header className="border border-stone-300 bg-sky-200 py-4 px-6">
+      <div
+        className={
+          leftBtnText ? "flex justify-between" : "relative flex justify-center"
+        }
+      >
         {leftBtnText && leftBtnLink && (
-          <div className="mr-auto ml-0">
-            <Link href={leftBtnLink}>
-              <a className="text-black">{leftBtnText}</a>
-            </Link>
-          </div>
-        )}
-        <p
-          className="text-black"
-          style={{
-            marginLeft: "auto",
-            marginRight: leftBtnText ? "auto" : "none",
-          }}
-        >
-          {pageTitle}
-        </p>
-        <div className="mr-0 ml-auto">
-          <Link href={rightBtnLink}>
-            <a className="text-black" onClick={handleClick}>
-              {rightBtnText}{" "}
-            </a>
+          <Link href={leftBtnLink}>
+            <a className="text-black">{leftBtnText}</a>
           </Link>
-        </div>
+        )}
+        <p className="text-black">{pageTitle}</p>
+        <Link href={rightBtnLink}>
+          <a
+            className={
+              leftBtnText ? "text-black" : "absolute right-0 text-black"
+            }
+            onClick={handleClick}
+          >
+            {rightBtnText}
+          </a>
+        </Link>
       </div>
     </header>
   );
