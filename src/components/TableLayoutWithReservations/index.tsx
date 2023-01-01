@@ -11,7 +11,7 @@ function TableLayoutWithReservations() {
         rightBtnLink={"/table-editor"}
         pageTitle="Table and Reservations"
       />
-      <div className="flex min-h-screen bg-gray-100">
+      <div className="flex min-h-screen bg-gray-100 h-screen">
         <Sidebar />
         <div className="flex-1">
           <MainLayout />

@@ -2,6 +2,7 @@ import React from "react";
 import type { TableGridProps } from "@src/types/props";
 import { gridColNum } from "../../../const";
 import { useGridEditor } from "./hooks";
+import TableLayout from "@src/components/Common/TableLayout";
 
 function TableGrid({
   setShowModal,
@@ -55,13 +56,11 @@ function TableGrid({
   }
 
   return (
-    <div className="container absolute mx-auto overflow-scroll rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">
-      <section className="absolute grid aspect-square w-[80vw] grid-cols-15 grid-rows-15 gap-1 rounded-lg text-center font-mono text-sm font-bold leading-6 text-slate-500">
+    <div className="container relative mx-auto max-w-[885px] overflow-scroll rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700">
+      <section className="absolute grid aspect-square w-full grid-cols-15 grid-rows-15 gap-1 rounded-lg text-center font-mono text-sm font-bold leading-6 text-slate-500">
         {defaultGridCells}
       </section>
-      <section className="pointer-events-none relative grid aspect-square w-[80vw] grid-cols-15 grid-rows-15 gap-1 rounded-lg text-center font-mono text-sm font-bold leading-6 text-slate-500">
-        {coloredCells}
-      </section>
+      <TableLayout isEditor={true} gridCells={coloredCells} />
     </div>
   );
 }

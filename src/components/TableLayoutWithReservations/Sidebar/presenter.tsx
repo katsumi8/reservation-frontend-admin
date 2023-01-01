@@ -22,7 +22,7 @@ export const SidebarPresenter = ({
     );
 
   return (
-    <div className="flex min-h-screen w-56 flex-col overflow-y-auto rounded-lg bg-white pt-2 pb-6 shadow-lg">
+    <div className="flex min-h-screen w-72 flex-col overflow-y-auto rounded-lg bg-white pt-2 pb-6 shadow-lg">
       <div className="mx-auto mb-5 flex">
         <div
           className="flex w-6 items-center justify-center rounded-l-lg bg-gray-400 text-slate-50"
