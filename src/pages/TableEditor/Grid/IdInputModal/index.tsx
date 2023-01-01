@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Modal from "react-modal";
-import { idInputModalProps } from "../../../../src/types/props";
+import { IdInputModalProps } from "@src/types/props";
 import { useModal } from "./hooks";
 
 const IdInputModal = ({
@@ -8,8 +8,7 @@ const IdInputModal = ({
   setTableStyles,
   showModal,
   setShowModal,
-}: idInputModalProps) => {
-
+}: IdInputModalProps) => {
   const {
     customStyles,
     tableId,

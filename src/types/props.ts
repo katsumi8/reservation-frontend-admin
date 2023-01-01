@@ -1,20 +1,20 @@
 import { ApolloError } from "@apollo/client";
 import { Dispatch, SetStateAction } from "react";
 import { Reservation, Table } from "./serverState";
-import { cellType, ShowDetailsState } from "./states";
+import { CellType, ShowDetailsState } from "./states";
 
-export type idInputModalProps = {
+export type IdInputModalProps = {
   selectedCells: { startCell: number; endCell: number };
   setTableStyles: Dispatch<SetStateAction<Table[]>>;
   showModal: boolean;
   setShowModal: Dispatch<SetStateAction<boolean>>;
 };
 
-export type idInputModalHooksProps = Omit<idInputModalProps, "showModal">;
+export type IdInputModalHooksProps = Omit<IdInputModalProps, "showModal">;
 
 export type TableGridProps = {
   setShowModal: Dispatch<SetStateAction<boolean>>;
-  setSelectedCells: Dispatch<SetStateAction<cellType>>;
+  setSelectedCells: Dispatch<SetStateAction<CellType>>;
   tableStyles: Table[];
   setTableStyles: Dispatch<SetStateAction<Table[]>>;
 };
@@ -37,6 +37,15 @@ export type HeaderProps = {
   leftBtnLink?: string;
   mutationTables?: Table[];
   fetchedTables?: Table[];
+};
+
+export type HeaderPresenterProps = Omit<
+  HeaderProps,
+  "mutationTables" | "fetchedTables"
+> & {
+  handleClick: (e: {
+    preventDefault: () => void;
+  }) => Promise<boolean | undefined>;
 };
 
 export type SidebarPresenterProps = {

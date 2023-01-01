@@ -1,9 +1,9 @@
 import React from "react";
-import Header from "../Header";
+import Header from "../Common/Header";
 import Sidebar from "./Sidebar";
 import MainLayout from "./MainLayout";
 
-function TableLayout() {
+function TableLayoutWithReservations() {
   return (
     <>
       <Header
@@ -21,4 +21,4 @@ function TableLayout() {
   );
 }
 
-export default TableLayout;
+export default TableLayoutWithReservations;

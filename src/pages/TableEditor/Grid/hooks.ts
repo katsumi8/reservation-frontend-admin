@@ -1,4 +1,4 @@
-import { TableGridProps } from "../../../src/types/props";
+import { TableGridProps } from "@src/types/props";
 
 export const useGridEditor = ({
   setShowModal,

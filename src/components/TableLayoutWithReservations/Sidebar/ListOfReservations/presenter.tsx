@@ -1,5 +1,4 @@
 import { ListsOfReservationsPresenterProps } from "@src/types/props";
-import { Reservation } from "@src/types/serverState";
 import React from "react";
 
 

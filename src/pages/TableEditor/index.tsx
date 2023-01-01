@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React, { useState } from "react";
-import Header from "../../components/Header";
+import Header from "../../components/Common/Header";
 import { useFetchTableData } from "@src/utils/queries/tableData";
 import type { Table} from "@src/types/serverState"
 import Grid from "./Grid";

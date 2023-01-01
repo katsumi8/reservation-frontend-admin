@@ -1,17 +1,12 @@
-// not yes\t
-
 import { useState } from "react";
-import {
-  idInputModalHooksProps,
-  idInputModalProps,
-} from "../../../../src/types/props";
+import type { IdInputModalHooksProps } from "@src/types/props";
 import { gridColNum } from "../../../../const";
 
 export const useModal = ({
   selectedCells,
   setTableStyles,
   setShowModal,
-}: idInputModalHooksProps) => {
+}: IdInputModalHooksProps) => {
   const [tableId, setTableId] = useState<string>("");
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [isErrored, setIsErrored] = useState<boolean>(false);

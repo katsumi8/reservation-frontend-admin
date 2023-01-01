@@ -1,14 +1,14 @@
-export type tableStyle = {
-  id?: string;
-  tableName: string;
-  capability: string;
-  isReserved?: boolean;
-  position: string;
-  isRounded: boolean;
-  isUnReservable?: boolean;
-};
+// export type TableStyle = {
+//   id?: string;
+//   tableName: string;
+//   capability: string;
+//   isReserved?: boolean;
+//   position: string;
+//   isRounded: boolean;
+//   isUnReservable?: boolean;
+// };
 
-export type cellType = {
+export type CellType = {
   startCell: number;
   endCell: number;
 };

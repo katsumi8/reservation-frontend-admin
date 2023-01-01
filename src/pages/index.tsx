@@ -1,4 +1,4 @@
-import TableLayout from "@src/components/TableLayout";
+import TableLayoutWithReservations from "@src/components/TableLayoutWithReservations";
 import Head from "next/head";
 import React from "react";
 
@@ -11,7 +11,7 @@ function Home() {
         <title>{title}</title>
         <meta name="description" content="Editing the table layout" />
       </Head>
-      <TableLayout />
+      <TableLayoutWithReservations />
     </div>
   );
 }
