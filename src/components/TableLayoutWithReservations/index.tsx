@@ -8,7 +8,7 @@ function TableLayoutWithReservations() {
     <>
       <Header
         rightBtnText={"Edit Table"}
-        rightBtnLink={"/TableEditor"}
+        rightBtnLink={"/table-editor"}
         pageTitle="Table and Reservations"
       />
       <div className="flex min-h-screen bg-gray-100">
