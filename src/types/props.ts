@@ -12,12 +12,6 @@ export type IdInputModalProps = {
 
 export type IdInputModalHooksProps = Omit<IdInputModalProps, "showModal">;
 
-export type TableGridProps = {
-  setShowModal: Dispatch<SetStateAction<boolean>>;
-  setSelectedCells: Dispatch<SetStateAction<CellType>>;
-  tableStyles: Table[];
-  setTableStyles: Dispatch<SetStateAction<Table[]>>;
-};
 
 export type GridProps = {
   tableStyles: Table[];
@@ -63,4 +57,28 @@ export type SidebarPresenterProps = {
 export type ListsOfReservationsPresenterProps = {
   reservations: Reservation[];
   reservationLists: JSX.Element[];
+};
+
+export type TableEditorPresenterProps = {
+  loading: boolean;
+  error: ApolloError | undefined;
+  tableStyles: Table[];
+  setTableStyles: React.Dispatch<React.SetStateAction<Table[]>>;
+  initialData: Table[];
+};
+
+export type TableGridProps = {
+  setShowModal: Dispatch<SetStateAction<boolean>>;
+  setSelectedCells: Dispatch<SetStateAction<CellType>>;
+  tableStyles: Table[];
+  setTableStyles: Dispatch<SetStateAction<Table[]>>;
+};
+
+export type GridPresenterProps = {
+  setShowModal: Dispatch<SetStateAction<boolean>>;
+  setTableStyles: Dispatch<SetStateAction<Table[]>>;
+  defaultGridCells: JSX.Element[]
+  coloredCells: JSX.Element[]
+  selectedCells: CellType
+  showModal: boolean
 };
