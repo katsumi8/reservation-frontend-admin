@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { IdInputModalHooksProps } from "@src/types/props";
-import { gridColNum } from "../../../../const";
+import { gridColNum } from "@src/const";
 
 export const useModal = ({
   selectedCells,

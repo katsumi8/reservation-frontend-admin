@@ -3,16 +3,6 @@ import { Dispatch, SetStateAction } from "react";
 import { Reservation, Table } from "./serverState";
 import { CellType, ShowDetailsState } from "./states";
 
-export type IdInputModalProps = {
-  selectedCells: { startCell: number; endCell: number };
-  setTableStyles: Dispatch<SetStateAction<Table[]>>;
-  showModal: boolean;
-  setShowModal: Dispatch<SetStateAction<boolean>>;
-};
-
-export type IdInputModalHooksProps = Omit<IdInputModalProps, "showModal">;
-
-
 export type GridProps = {
   tableStyles: Table[];
   setTableStyles: Dispatch<SetStateAction<Table[]>>;
@@ -67,18 +57,42 @@ export type TableEditorPresenterProps = {
   initialData: Table[];
 };
 
-export type TableGridProps = {
-  setShowModal: Dispatch<SetStateAction<boolean>>;
-  setSelectedCells: Dispatch<SetStateAction<CellType>>;
-  tableStyles: Table[];
-  setTableStyles: Dispatch<SetStateAction<Table[]>>;
-};
-
 export type GridPresenterProps = {
   setShowModal: Dispatch<SetStateAction<boolean>>;
   setTableStyles: Dispatch<SetStateAction<Table[]>>;
-  defaultGridCells: JSX.Element[]
-  coloredCells: JSX.Element[]
-  selectedCells: CellType
-  showModal: boolean
+  defaultGridCells: JSX.Element[];
+  coloredCells: JSX.Element[];
+  selectedCells: CellType;
+  showModal: boolean;
+};
+
+export type IdInputModalProps = {
+  selectedCells: { startCell: number; endCell: number };
+  setTableStyles: Dispatch<SetStateAction<Table[]>>;
+  showModal: boolean;
+  setShowModal: Dispatch<SetStateAction<boolean>>;
+};
+
+export type IdInputModalHooksProps = Omit<IdInputModalProps, "showModal">;
+
+export type IdInputModalPresenterProps = {
+  customStyles: {
+    content: {
+      top: string;
+      left: string;
+      right: string;
+      bottom: string;
+      marginRight: string;
+      transform: string;
+    };
+  };
+  showModal: boolean;
+  tableId: string;
+  setTableId: Dispatch<SetStateAction<string>>;
+  setIsErrored: Dispatch<SetStateAction<boolean>>;
+  isErrored: boolean;
+  isChecked: boolean;
+  isCheckHandler: () => void;
+  cancelHandler: () => void;
+  submitHandler: () => void;
 };
