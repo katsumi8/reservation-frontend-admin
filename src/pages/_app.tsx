@@ -4,8 +4,8 @@ import "tailwindcss/tailwind.css";
 import "../../styles/global.css";
 
 const client = new ApolloClient({
-  uri: "https://reservation-system.onrender.com/",
-  // uri: process.env.NEXT_PUBLIC_BACKEND_URL as string,
+  // uri: "https://reservation-system.onrender.com/",
+  uri: process.env.NEXT_PUBLIC_BACKEND_URL as string,
   cache: new InMemoryCache(),
 });
 
