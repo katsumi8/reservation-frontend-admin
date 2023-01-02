@@ -1,13 +1,3 @@
-// export type TableStyle = {
-//   id?: string;
-//   tableName: string;
-//   capability: string;
-//   isReserved?: boolean;
-//   position: string;
-//   isRounded: boolean;
-//   isUnReservable?: boolean;
-// };
-
 import { Dispatch, SetStateAction } from "react";
 import { Table } from "./serverState";
 
