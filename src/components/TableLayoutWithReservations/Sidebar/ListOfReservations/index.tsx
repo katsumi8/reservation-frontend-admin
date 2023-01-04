@@ -12,8 +12,6 @@ const ListsOfReservations = ({
   const [showDetails, setShowDetails] =
     useState<Array<ShowDetailsState>>(listDefaultValue);
 
-  if (reservations.length === 0) return <></>;
-
   const listClickHandler = (e: React.MouseEvent<HTMLElement>) => {
     const { id } = e.currentTarget;
 
@@ -44,7 +42,7 @@ const ListsOfReservations = ({
         {isShow && (
           <>
             <p>
-              {table.tableName}
+              table id: {table.tableName}
               {/* <span className="focus:shadow-outline rounded bg-blue-500 px-px text-white shadow hover:bg-blue-400 focus:outline-none">
                 edit
               </span> */}

@@ -1,9 +1,13 @@
-
 const useDateProcessor = () => {
+  // manage to YYYY/MM/DD format
   const convertDateToDBformat = (dateProp: Date): string => {
-    return `${dateProp.getFullYear()}/${
-      dateProp.getMonth() + 1
-    }/${dateProp.getDate()}`;
+    const year = dateProp.getFullYear();
+    const month = dateProp.getMonth() + 1;
+    const day = dateProp.getDate();
+
+    return `${year}/${month < 10 ? "0" + month.toString() : month}/${
+      day < 10 ? "0" + day.toString() : day
+    }`;
   };
 
   const convertDateToString = (dateProp: Date): string => {
