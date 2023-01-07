@@ -31,6 +31,9 @@ export const useGridEditor = ({
     setShowModal(true);
     setSelectedCells((prevState) => ({ ...prevState, endCell: Number(id) }));
   };
+  const mobileTouchMoveHandler = (e: React.TouchEvent<HTMLDivElement>) => {
+    e.preventDefault();
+  };
 
   const deleteClickHandler = (tableName: string) => {
     setTableStyles(tableStyles.filter((item) => item.tableName !== tableName));
@@ -41,6 +44,7 @@ export const useGridEditor = ({
     mouseClickLeaveHandler,
     mobileTouchStartHandler,
     mobileTouchEndHandler,
+    mobileTouchMoveHandler,
     deleteClickHandler,
   };
 };
