@@ -14,7 +14,7 @@ function GridPresenter({
   setShowModal,
 }: GridPresenterProps) {
   return (
-    <div className="container relative mx-auto max-w-[885px] overflow-scroll rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700">
+    <div className="container relative mx-auto xl:max-w-[885px] max-w-[700px] overflow-scroll rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700">
       <section className="absolute grid aspect-square w-full grid-cols-15 grid-rows-15 gap-1 rounded-lg text-center font-mono text-sm font-bold leading-6 text-slate-500">
         {defaultGridCells}
       </section>
