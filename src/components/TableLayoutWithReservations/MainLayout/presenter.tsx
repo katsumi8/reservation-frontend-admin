@@ -18,7 +18,7 @@ const MainLayoutPresenter = ({
     return <p className="text-red-700">Layout Error! {error.message}</p>;
 
   return (
-    <div className="container xl:max-w-[885px] max-w-[750px] mx-auto rounded-lg border border-gray-200 bg-stone-100 p-6 shadow-md dark:border-gray-700">
+    <div className="container xl:max-w-[885px] max-w-[755px] mx-auto rounded-lg border border-gray-200 bg-stone-100 p-6 shadow-md dark:border-gray-700">
       <TableLayout isEditor={false} gridCells={tableLayout} />
     </div>
   );
