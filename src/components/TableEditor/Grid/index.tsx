@@ -16,7 +16,7 @@ export default function Grid({ tableStyles, setTableStyles }: GridProps) {
     mouseClickLeaveHandler,
     mobileTouchStartHandler,
     mobileTouchEndHandler,
-    mobileTouchMoveHandler,
+    // mobileTouchMoveHandler,
     deleteClickHandler,
   } = useGridEditor({
     setShowModal,
@@ -29,14 +29,14 @@ export default function Grid({ tableStyles, setTableStyles }: GridProps) {
   for (let i = 0; i < gridColNum ** 2; i++) {
     defaultGridCells.push(
       <div
-        className="aspect-square select-none rounded-lg border-blue-500 bg-slate-50 p-1 shadow-lg"
+        className="aspect-square select-none rounded-lg border-blue-500 bg-slate-50 p-1 shadow-lg touch-none"
         key={i.toString()}
         id={i.toString()}
         onMouseDown={mouseClickStartHandler}
         onMouseUp={mouseClickLeaveHandler}
         onTouchStart={mobileTouchStartHandler}
         onTouchEnd={mobileTouchEndHandler}
-        onTouchMove={mobileTouchMoveHandler}
+        // onTouchMove={mobileTouchMoveHandler}
       >
         +
       </div>

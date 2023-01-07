@@ -1,7 +1,5 @@
 import React from "react";
 import type { GridPresenterProps } from "@src/types/props";
-import { gridColNum } from "../../../const";
-import { useGridEditor } from "../../../hooks/useGridEditor";
 import TableLayout from "@src/components/Common/TableLayout";
 import IdInputModal from "./IdInputModal";
 

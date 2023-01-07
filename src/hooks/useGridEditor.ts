@@ -7,13 +7,11 @@ export const useGridEditor = ({
   setTableStyles,
 }: UseGridTypes) => {
   const mouseClickStartHandler = (e: React.MouseEvent<HTMLElement>): void => {
-    e.preventDefault();
     const { id } = e.currentTarget;
     setSelectedCells((prevState) => ({ ...prevState, startCell: Number(id) }));
   };
 
   const mouseClickLeaveHandler = (e: React.MouseEvent<HTMLElement>): void => {
-    e.preventDefault();
     const { id } = e.currentTarget;
     setShowModal(true);
     setSelectedCells((prevState) => ({ ...prevState, endCell: Number(id) }));
@@ -21,19 +19,20 @@ export const useGridEditor = ({
 
   // To deal with mobile devices
   const mobileTouchStartHandler = (e: React.TouchEvent<HTMLDivElement>) => {
-    e.preventDefault();
     const { id } = e.currentTarget;
     setSelectedCells((prevState) => ({ ...prevState, startCell: Number(id) }));
   };
   const mobileTouchEndHandler = (e: React.TouchEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    const { id } = e.currentTarget;
+    const { id } = document.elementFromPoint(
+      e.changedTouches[0].clientX,
+      e.changedTouches[0].clientY
+    )!;
     setShowModal(true);
     setSelectedCells((prevState) => ({ ...prevState, endCell: Number(id) }));
   };
-  const mobileTouchMoveHandler = (e: React.TouchEvent<HTMLDivElement>) => {
-    e.preventDefault();
-  };
+  // const mobileTouchMoveHandler = (e: React.TouchEvent<HTMLDivElement>) => {
+  //   e.nativeEvent.preventDefault();
+  // };
 
   const deleteClickHandler = (tableName: string) => {
     setTableStyles(tableStyles.filter((item) => item.tableName !== tableName));
@@ -44,7 +43,7 @@ export const useGridEditor = ({
     mouseClickLeaveHandler,
     mobileTouchStartHandler,
     mobileTouchEndHandler,
-    mobileTouchMoveHandler,
+    // mobileTouchMoveHandler,
     deleteClickHandler,
   };
 };
