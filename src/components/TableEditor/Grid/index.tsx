@@ -16,7 +16,6 @@ export default function Grid({ tableStyles, setTableStyles }: GridProps) {
     mouseClickLeaveHandler,
     mobileTouchStartHandler,
     mobileTouchEndHandler,
-    // mobileTouchMoveHandler,
     deleteClickHandler,
   } = useGridEditor({
     setShowModal,
@@ -36,7 +35,6 @@ export default function Grid({ tableStyles, setTableStyles }: GridProps) {
         onMouseUp={mouseClickLeaveHandler}
         onTouchStart={mobileTouchStartHandler}
         onTouchEnd={mobileTouchEndHandler}
-        // onTouchMove={mobileTouchMoveHandler}
       >
         +
       </div>
