@@ -11,13 +11,18 @@ export default function Grid({ tableStyles, setTableStyles }: GridProps) {
     endCell: 0,
   });
   const [showModal, setShowModal] = useState<boolean>(false);
-  const { mouseClickStartHandler, mouseClickLeaveHandler, deleteClickHandler } =
-    useGridEditor({
-      setShowModal,
-      setSelectedCells,
-      tableStyles,
-      setTableStyles,
-    });
+  const {
+    mouseClickStartHandler,
+    mouseClickLeaveHandler,
+    mobileTouchStartHandler,
+    mobileTouchEndHandler,
+    deleteClickHandler,
+  } = useGridEditor({
+    setShowModal,
+    setSelectedCells,
+    tableStyles,
+    setTableStyles,
+  });
 
   const defaultGridCells: JSX.Element[] = [];
   for (let i = 0; i < gridColNum ** 2; i++) {
@@ -28,6 +33,8 @@ export default function Grid({ tableStyles, setTableStyles }: GridProps) {
         id={i.toString()}
         onMouseDown={mouseClickStartHandler}
         onMouseUp={mouseClickLeaveHandler}
+        onTouchStart={mobileTouchStartHandler}
+        onTouchEnd={mobileTouchEndHandler}
       >
         +
       </div>
